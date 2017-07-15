@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+    webox:
+        build: .
+        command: nodemon --debug=5656 server.js
+        volumes:
+            - .:/angularhuman
+        ports:
+            - "9000:9000"
+            - "5656:5656"
+        restart: always       
