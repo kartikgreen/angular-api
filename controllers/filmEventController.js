@@ -42,17 +42,6 @@ module.exports = {
             res.json(response);
             console.log(response);
        });
-    },
-    //get one filmEvent
-    getFilmEvent: function(req, res) {
-        var id = req.params.id;
-        filmEventModel.findById(id, (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {
-                res.json(data);
-            }         
-        });
     },   
     createFilmEvent: function(req, res) {
         var filmEvent = new filmEventModel(req.body);  

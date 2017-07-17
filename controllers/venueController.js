@@ -62,18 +62,7 @@ module.exports = {
                 res.json(data);
             }         
         });
-    },     
-    //get one venue
-    getAnVenue: function(req, res) {
-        var id = req.params.id;
-        venueModel.findById(id, (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {
-                res.json(data);
-            }         
-        });
-    },   
+    }, 
     createVenue: function(req, res) {
         var venue = new venueModel(req.body);  
         venue.save(function(error, response) {

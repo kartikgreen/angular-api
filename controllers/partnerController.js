@@ -10,17 +10,6 @@ module.exports = {
             }         
         });    
     },   
-    //get one partner
-    getAPartner: function(req, res) {
-        var id = req.params.id;
-        partnerModel.findById(id, (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {
-                res.json(data);
-            }         
-        });
-    },
     updatePartner: function(req, res) {
         var id = req.params.id;
         console.log(id);

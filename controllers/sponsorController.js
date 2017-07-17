@@ -9,18 +9,7 @@ module.exports = {
                 res.json(data);
             }         
         });    
-    },   
-    //get one sponsor
-    getAnSponsor: function(req, res) {
-        var id = req.params.id;
-        sponsorModel.findById(id, (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {
-                res.json(data);
-            }         
-        });
-    },
+    },  
     updateSponsor: function(req, res) {
         var id = req.params.id;
         console.log(id);

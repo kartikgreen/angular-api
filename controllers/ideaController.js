@@ -8,18 +8,7 @@ module.exports = {
                 res.json(data);
             }         
         });    
-    },
-     //get one idea
-    getAnIdea: function(req, res) {
-        var id = req.params.id;
-        ideaModel.findById(id, (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {
-                res.json(data);
-            }         
-        });
-    },
+    },     
     updateIdea: function(req, res) {
         var id = req.params.id;
         console.log(id);

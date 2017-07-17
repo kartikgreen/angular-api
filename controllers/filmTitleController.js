@@ -34,17 +34,6 @@ module.exports = {
             console.log(response);
        });
     },
-    //get one filmTitle
-    getFilmTitle: function(req, res) {
-        var id = req.params.id;
-        filmTitleModel.findById(id, (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {
-                res.json(data);
-            }         
-        });
-    },
     //get film title by name
     getFilmTitlesName: (req, res)=>{
         filmTitleModel.find().distinct('filmTitle', (err, data) => {

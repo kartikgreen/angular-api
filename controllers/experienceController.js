@@ -80,17 +80,6 @@ module.exports = {
             }         
         });
     },
-    //get one experience
-    getAnExperience: function(req, res) {
-        var id = req.params.id;
-        experienceModel.findById(id, (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {
-                res.json(data);
-            }         
-        });
-    },   
     createExperience: function(req, res) {
         var experience = new experienceModel(req.body);  
         experience.save(function(error, response) {
