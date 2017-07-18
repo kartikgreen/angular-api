@@ -24,8 +24,8 @@ var corsOptions = {
 app.use(cors(corsOptions));
 //jwt config
 var authCheck = jwt({
-    secret: 'iA-RXI201idBzAC4XUaoGj1riNrwpttn3kSaEyGeYNu_9fBcAQHUe9WpQBpcdjAT',
-    audience: 'cCuERVf4BI3O2wXZLSdkm5xuwD31dOZW'
+    secret: 'dHQS-fpgX23M96ENXjckYKD-rTAMyyyWBEupEaa7ahnZUf0wJLvYlp_rllpSpmdy',
+    audience: 'zez5eFxUum9uvoO6GZoXipq3gKkaGhuK'
 });
 //protect experience api with authcheck
 app.use('/experiences', authCheck);
