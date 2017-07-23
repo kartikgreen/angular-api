@@ -70,7 +70,7 @@ app.use('/venues/delete/:id', authCheck);
 
 //protect filmtitles api with authcheck
 app.use('/filmtitles', authCheck);
-app.use('/filmtitles/getfilmtitlesname', authCheck);
+app.use('/filmtitles/getfilmtitlename', authCheck);
 app.use('/filmtitles/gethashtags', authCheck);
 app.use('/filmtitles/add', authCheck);
 app.use('/filmtitles/put/:id', authCheck);

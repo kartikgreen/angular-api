@@ -54,7 +54,7 @@ router.route('/filmtitles').get(filmTitleCtrl.getAllFilmTitle);
 router.route('/filmtitles/gethashtags').get(filmTitleCtrl.getHashTags);
 router.route('/filmtitles/add').post(filmTitleCtrl.createFilmTitle);
 router.route('/filmtitles/delete/:id').delete(filmTitleCtrl.deleteFilmTitle);
-router.route('/filmtitles/getfilmtitlesname').get(filmTitleCtrl.getFilmTitlesName);
+router.route('/filmtitles/getfilmtitlename').get(filmTitleCtrl.getfilmtitlename);
 router.route('/filmtitles/put/:id').put(filmTitleCtrl.updateFilmTitle);
 
 //Routes for filmevents
