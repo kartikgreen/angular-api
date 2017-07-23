@@ -1,29 +1,30 @@
 var mongoose = require('../shared/dbConfig.js');
 var Schema = mongoose.Schema;
 
-var venueContactSchema = new Schema(    
+var venueContactSchema = new Schema(
     {
         name: { type: String, required: true },
         position: { type: String, required: true },
         phone: { type: Number, required: true },
         email: { type: String, required: true },
         facebookUrl: { type: String, required: true },
-    }    
+    }
 );
 var venueSchema = new Schema({
+    name: { type: String, required: true },
+    companyName: { type: String, required: true },
     metaDescription: { type: String, required: true },
+    introduction: { type: String, required: true },
+    mainEditor: { type: String, required: true },
     headerImage: { type: String, required: true },
     galleryImages: { type: Array, required: true },
-    mainEditor: { type: String, required: true },
-    introduction: { type: String, required: true },
-    name: { type: String, required: true },
     geoLocation: { "location": String, "lat": String, "lng": String },
     logoImage: { type: String, required: true },
     websiteUrl: { type: String, required: true },
     videoUrl: { type: String, required: true },
     facebookUrl: { type: String, required: true },
     twitterUrl: { type: String, required: true },
-    instagramUrl: { type: String, required: true },    
+    instagramUrl: { type: String, required: true },
     mainCategory: { type: Array, required: true },
     amenities: { type: Array, required: true },
     ticketServiceUrl: { type: String, required: true },
@@ -47,7 +48,7 @@ var venueSchema = new Schema({
     paymentContact: { type: String, required: true },
     paymentPreference: { type: String, required: true },
     paypalEmail: { type: String },
-    ibanAccount: { type: String },    
+    ibanAccount: { type: String },
  });
 var venueModel = mongoose.model("Venue", venueSchema);
 module.exports = venueModel;

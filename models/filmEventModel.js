@@ -15,13 +15,13 @@ var filmEventSponsorSchema = new Schema(
 
 var filmEventSchema = new Schema({
     metaDescription: { type: String, required: true },
-    headerImage: { type: String, required: true },
-    galleryImages: { type: Array, required: true },     
-    mainEditor: { type: String, required: true },
     introduction: { type: String, required: true },
+    mainEditor: { type: String, required: true },
+    headerImage: { type: String, required: true },
+    galleryImages: { type: Array, required: true },
     hashtags: { type: Array, required: true },
     facebookUrl: { type: String, required: true },
-    filmTitle: { type: String, required: true },
+    filmTitleName: { type: String, required: true },
     partnerName: { type: Array, required: true },
     venueName: { type: String, required: true },
     mainCategory: { type: String, required: true },
@@ -43,7 +43,7 @@ var filmEventSchema = new Schema({
         price: { type: Number, required: true },
         type: { type: String, required: true },
     },
-    sponsors: [filmEventSponsorSchema]            
+    sponsors: [filmEventSponsorSchema]
 });
 
 var filmEventModel = mongoose.model("filmEvent", filmEventSchema);

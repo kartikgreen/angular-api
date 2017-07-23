@@ -1,22 +1,23 @@
 var mongoose = require('../shared/dbConfig.js');
 var Schema = mongoose.Schema;
 
-var partnerContactSchema = new Schema(    
+var partnerContactSchema = new Schema(
         {
             name: { type: String, required: true },
             position: { type: String, required: true },
             phone: { type: Number, required: true },
             email: { type: String, required: true },
-        }    
+        }
 );
 
 var partnerSchema = new Schema({
+    name: { type: String, required: true },
+    companyName: { type: String, required: true },
     metaDescription: { type: String, required: true },
+    introduction: { type: String, required: true },
+    mainEditor: { type: String, required: true },
     headerImage: { type: String, required: true },
     galleryImages: { type: Array, required: true },
-    mainEditor: { type: String, required: true },
-    introduction: { type: String, required: true },
-    name: { type: String, required: true },
     geoLocation: { "location": String, "lat": String, "lng": String },
     logoImage: { type: String, required: true },
     websiteUrl: { type: String, required: true },
