@@ -1,69 +1,71 @@
 var filmEventModel = require('../models/filmEventModel');
 module.exports = {
-    //Get all filmEvents
-     getAllFilmEvent: function(req, res) {
+    //get all film events
+     getAllFilmEvents: function(req, res) {
         filmEventModel.find({}, (err, data) => {
             if (err) {
-                res.status(500).send(error); 
+                res.status(500).send(error);
             } else {
                 res.json(data);
-            }         
-        });    
-    },    
-    //get Hashtags
+            }
+        });
+    },
+    //get all main categories
+    getMainCategory: (req, res)=>{
+        filmEventModel.find().distinct('mainCategory', (err, data) => {
+            if (err) {
+                res.status(500).send(error);
+            } else {
+                res.json(data);
+            }
+        });
+    },
+    //get all hashtags
     getHashTags: (req, res)=>{
         filmEventModel.find().distinct('hashtags', (err, data) => {
             if (err) {
-                res.status(500).send(error); 
+                res.status(500).send(error);
             } else {
                 res.json(data);
-            }         
-        });
-    },
-    //get distinct main category of filmevents 
-    getMainCategoryByFilmEvents: (req, res)=>{
-        filmEventModel.find().distinct('mainCategory', (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {               
-                res.json(data);
-            }         
-        });
-    },
-    updateFilmEvent: function(req, res) {
-        var id = req.params.id;
-        filmEventModel.findByIdAndUpdate(id, req.body, 
-            { overwrite: true, new: true }, (error, response) => {            
-            if (error) {
-                res.json(error);
-                console.error(error);
-                return;  
             }
-            res.json(response);
-            console.log(response);
-       });
-    },   
-    createFilmEvent: function(req, res) {
-        var filmEvent = new filmEventModel(req.body);  
+        });
+    },
+    //create single film event
+    create: function(req, res) {
+        var filmEvent = new filmEventModel(req.body);
         filmEvent.save(function(error, response) {
             if (error) {
                 res.json(error);
                 console.error(error);
-                return;  
-            }   
+                return;
+            }
             res.json(response);
             console.log(response);
-        });             
+        });
     },
-
-    deleteFilmEvent: function(req, res) {
+    //update single film event
+    update: function(req, res) {
+        var id = req.params.id;
+        filmEventModel.findByIdAndUpdate(id, req.body,
+            { overwrite: true, new: true }, (error, response) => {
+            if (error) {
+                res.json(error);
+                console.error(error);
+                return;
+            }
+            res.json(response);
+            console.log(response);
+       });
+    },
+    //delete single film event
+    delete: function(req, res) {
         var id = req.params.id;
         filmEventModel.remove({_id: id}, (err, data) => {
             if (err) {
-                res.status(500).send(error); 
+                res.status(500).send(error);
             } else {
                 res.json(data);
-            }         
+            }
         });
-    }    
+    }
 }
