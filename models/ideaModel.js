@@ -3,33 +3,33 @@ var Schema = mongoose.Schema;
 
 var ingredientsSchema = new Schema(
     {
-        ingredient: { type: String, required: true },
-        amount: { type: Number, required: true },
-        unit: { type: Number, required: true },
+        ingredient: { type: String },
+        amount: { type: Number },
+        unit: { type: Number },
     }
 );
 
 var recipeSchema = new Schema(
-    { servings: { type: Number, required: true },
-       cookingtime: { type: Number, required: true },
+    { servings: { type: Number },
+       cookingtime: { type: Number },
        ingredients: [ingredientsSchema]
     }
 );
 
 var ideaSchema = new Schema({
-    name: { type: String, required: true },
-    metaDescription: { type: String, required: true },
-    introduction: { type: String, required: true },
-    mainEditor: { type: String, required: true },
-    headerImage: { type: String, required: true },
-    galleryImages: { type: Array, required: true },
-    videoUrl: { type: String, required: true },
-    unDevelopmentGoals: { type: String, required: true },
-    websiteUrl: { type: String, required: true },
-    facebookUrl: { type: String, required: true },
-    partnerName: { type: String, required: true },
-    mainCategory: { type: String, required: true },
-    hashtags: { type: Array, required: true },
+    name: { type: String },
+    metaDescription: { type: String },
+    introduction: { type: String },
+    mainEditor: { type: String },
+    unDevelopmentGoals: { type: String },
+    mainCategory: { type: String },
+    hashtags: { type: Array },
+    headerImage: { type: String },
+    galleryImages: { type: Array },
+    videoUrl: { type: String },
+    websiteUrl: { type: String },
+    facebookUrl: { type: String },
+    partnerName: { type: String },
     recipe: recipeSchema
  });
 

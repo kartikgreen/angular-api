@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var filmEventSponsorSchema = new Schema(
     {
-        sponsorName: { type: String, required: true },
-        sponsorType: { type: String, enum: ['Product', 'Financial'], required: true },
+        sponsorName: { type: String },
+        sponsorType: { type: String, enum: ['Product', 'Financial'] },
         productName: { type: String },
         amount: {
             price: { type: Number },
@@ -14,34 +14,34 @@ var filmEventSponsorSchema = new Schema(
 );
 
 var filmEventSchema = new Schema({
-    metaDescription: { type: String, required: true },
-    introduction: { type: String, required: true },
-    mainEditor: { type: String, required: true },
-    headerImage: { type: String, required: true },
-    galleryImages: { type: Array, required: true },
-    hashtags: { type: Array, required: true },
-    facebookUrl: { type: String, required: true },
-    filmTitleName: { type: String, required: true },
-    partnerName: { type: Array, required: true },
-    venueName: { type: String, required: true },
-    mainCategory: { type: String, required: true },
-    unDevelopmentGoals: { type: Array, required: true },
-    startDate: { type: String, required: true },
-    endDate: { type: String, required: true },
+    metaDescription: { type: String },
+    introduction: { type: String },
+    mainEditor: { type: String },
+    headerImage: { type: String },
+    galleryImages: { type: Array },
+    unDevelopmentGoals: { type: Array },
+    mainCategory: { type: String },
+    hashtags: { type: Array },
+    facebookUrl: { type: String },
+    filmTitleName: { type: String },
+    partnerName: { type: Array },
+    venueName: { type: String },
+    startDate: { type: String },
+    endDate: { type: String },
     startTime: {
-        hours: { type: String, required: true },
-        minutes: { type: String, required: true },
+        hours: { type: String },
+        minutes: { type: String },
     },
     endTime: {
-        hours: { type: String, required: true },
-        minutes: { type: String, required: true },
+        hours: { type: String },
+        minutes: { type: String },
     },
-    timeZone: { type: String, required: true },
-    ticketService: { type: String, required: true },
-    ticketUrl: { type: String, required: true },
+    timeZone: { type: String },
+    ticketService: { type: String },
+    ticketUrl: { type: String },
     ticketPrice: {
-        price: { type: Number, required: true },
-        type: { type: String, required: true },
+        price: { type: Number },
+        type: { type: String },
     },
     sponsors: [filmEventSponsorSchema]
 });
