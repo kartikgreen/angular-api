@@ -10,6 +10,16 @@ module.exports = {
             }
         });
     },
+    //get all names
+    getName: (req, res)=>{
+        experienceModel.find().distinct('name', (err, data) => {
+            if (err) {
+                res.status(500).send(error);
+            } else {
+                res.json(data);
+            }
+        });
+    },
     //get all main categories
     getMainCategory: (req, res)=>{
         experienceModel.find().distinct('mainCategory', (err, data) => {

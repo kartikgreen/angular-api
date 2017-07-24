@@ -7,7 +7,7 @@ router.route('/ideas').get(ideaCtrl.getAllIdeas);
 router.route('/ideas/add').post(ideaCtrl.create);
 router.route('/ideas/put/:id').put(ideaCtrl.update);
 router.route('/ideas/delete/:id').delete(ideaCtrl.delete);
-router.route('/ideas/getname').get(ideasCtrl.getName);
+router.route('/ideas/getname').get(ideaCtrl.getName);
 router.route('/ideas/getmaincategory').get(ideaCtrl.getMainCategory);
 router.route('/ideas/gethashtags').get(ideaCtrl.getHashTags);
 //
