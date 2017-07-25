@@ -11,7 +11,7 @@ var experienceSchema = new Schema({
     metaDescription: { type: String },
     introduction: { type: String },
     mainEditor: { type: String },
-    geoLocation: { "location": String, "lat": String, "lng": String },
+    geoLocation: { location: string, lat: string, lng: string },
     headerImage: { type: String },
     galleryImages: { type: Array },
     unDevelopmentGoals: { type: String },
