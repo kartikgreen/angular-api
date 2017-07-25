@@ -1,5 +1,6 @@
 var cors = require('cors')
 var jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -10,7 +11,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 //Body Parser Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 var originsWhitelist = [
   'http://localhost:4200'      //allowed front-end url for development
 ];
@@ -23,9 +24,19 @@ var corsOptions = {
 }
 app.use(cors(corsOptions));
 //jwt config
-var authCheck = jwt({
-    secret: 'dHQS-fpgX23M96ENXjckYKD-rTAMyyyWBEupEaa7ahnZUf0wJLvYlp_rllpSpmdy',
-    audience: 'zez5eFxUum9uvoO6GZoXipq3gKkaGhuK'
+const authCheck = jwt({
+  // Dynamically provide a signing key based on the kid in the header and the singing keys provided by the JWKS endpoint.
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://incredibleglobe.eu.auth0.com/.well-known/jwks.json`
+  }),
+
+  // Validate the audience and the issuer.
+  audience: process.env.AUTH0_AUDIENCE,
+  issuer: `https://incredibleglobe.eu.auth0.com/`,
+  algorithms: ['RS256']
 });
 //protect experience api with authcheck
 app.use('/experiences', authCheck);
@@ -36,7 +47,7 @@ app.use('/experiences/add', authCheck);
 app.use('/experiences/put/:id', authCheck);
 app.use('/experiences/delete/:id', authCheck);
 
-//protect ideas api with authcheck
+// //protect ideas api with authcheck
 app.use('/ideas', authCheck);
 app.use('/ideas/getideabymaincategory', authCheck);
 app.use('/ideas/gethashtags', authCheck);
