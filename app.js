@@ -40,16 +40,18 @@ const authCheck = jwt({
 });
 //protect experience api with authcheck
 app.use('/experiences', authCheck);
-app.use('/experiences/getexperiencebymaincategory', authCheck);
-app.use('/experiences/getincludesandexcludes', authCheck);
+app.use('/experiences/getname', authCheck);
+app.use('/experiences/getmaincategory', authCheck);
 app.use('/experiences/gethashtags', authCheck);
+app.use('/experiences/getincludesandexcludes', authCheck);
 app.use('/experiences/add', authCheck);
 app.use('/experiences/put/:id', authCheck);
 app.use('/experiences/delete/:id', authCheck);
 
 // //protect ideas api with authcheck
 app.use('/ideas', authCheck);
-app.use('/ideas/getideabymaincategory', authCheck);
+app.use('/ideas/getname', authCheck);
+app.use('/ideas/getmaincategory', authCheck);
 app.use('/ideas/gethashtags', authCheck);
 app.use('/ideas/add', authCheck);
 app.use('/ideas/put/:id', authCheck);
@@ -57,43 +59,43 @@ app.use('/ideas/delete/:id', authCheck);
 
 //protect sponsor api with authcheck
 app.use('/sponsors', authCheck);
-app.use('/sponsors/getsponsorname', authCheck);
+app.use('/sponsors/getname', authCheck);
 app.use('/sponsors/add', authCheck);
 app.use('/sponsors/put/:id', authCheck);
 app.use('/sponsors/delete/:id', authCheck);
 
 //protect partner api with authcheck
 app.use('/partners', authCheck);
-app.use('/partners/getpartnername', authCheck);
+app.use('/partners/getname', authCheck);
 app.use('/partners/add', authCheck);
 app.use('/partners/put/:id', authCheck);
 app.use('/partners/delete/:id', authCheck);
 
 //protect venue api with authcheck
 app.use('/venues', authCheck);
-app.use('/venues/getMainCategoryOfVenue', authCheck);
-app.use('/venues/getAmenitiesOfVenue', authCheck);
-app.use('/venues/getvenuename', authCheck);
-app.use('/venues/getFilmPlaybackOfVenue', authCheck);
+app.use('/venues/getname', authCheck);
+app.use('/venues/getmaincategory', authCheck);
+app.use('/venues/getamenities', authCheck);
+app.use('/venues/getfilmmedium', authCheck);
 app.use('/venues/add', authCheck);
 app.use('/venues/put/:id', authCheck);
 app.use('/venues/delete/:id', authCheck);
 
 //protect filmtitles api with authcheck
 app.use('/filmtitles', authCheck);
-app.use('/filmtitles/getfilmtitlesname', authCheck);
+app.use('/filmtitles/getname', authCheck);
 app.use('/filmtitles/gethashtags', authCheck);
 app.use('/filmtitles/add', authCheck);
 app.use('/filmtitles/put/:id', authCheck);
 app.use('/filmtitles/delete/:id', authCheck);
 
 //protect filmevents api with authcheck
-app.use('/singlefilmevents', authCheck);
-app.use('/singlefilmevents/gethashtags', authCheck);
-app.use('/singlefilmevents/add', authCheck);
-app.use('/singlefilmevents/gethashtags', authCheck);
-app.use('/singlefilmevents/put/:id', authCheck);
-app.use('/singlefilmevents/delete/:id', authCheck);
+app.use('/filmevents', authCheck);
+app.use('/filmevents/getmaincategory', authCheck);
+app.use('/filmevents/gethashtags', authCheck);
+app.use('/filmevents/add', authCheck);
+app.use('/filmevents/put/:id', authCheck);
+app.use('/filmevents/delete/:id', authCheck);
 
 //Global vars
 app.use(function(req, res, next){

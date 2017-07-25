@@ -1,39 +1,39 @@
 var mongoose = require('../shared/dbConfig.js');
 var Schema = mongoose.Schema;
-var dayDescriptionSchema = new Schema(    
+var dayDescriptionSchema = new Schema(
         {
-            day: { type: Number, required: true },
-            description: { type: String, required: true },
+            day: { type: Number },
+            description: { type: String },
         }
 );
 var experienceSchema = new Schema({
-    name: { type: String, required: true },
-    metaDescription: { type: String, required: true },
-    headerImage: { type: String, required: true },
-    galleryImages: { type: Array, required: true },
-    unDevelopmentGoals: { type: String, required: true },
-    mainEditor: { type: String, required: true },
-    introduction: { type: String, required: true },
-    mainCategory: { type: String, required: true },
+    name: { type: String },
+    metaDescription: { type: String },
+    introduction: { type: String },
+    mainEditor: { type: String },
+    geoLocation: { "location": String, "lat": String, "lng": String },
+    headerImage: { type: String },
+    galleryImages: { type: Array },
+    unDevelopmentGoals: { type: String },
+    mainCategory: { type: String },
+    hashTags: { type: Array },
     daysAndDescriptions: [dayDescriptionSchema],
-    totalNights: { type: Number, required: true },
-    minimumPeople: { type: Number, required: true },
-    maximumPeople: { type: Number, required: true },
-    minimumAge: { type: Number, required: true },
-    includes: { type: Array, required: true },
-    excludes: { type: Array, required: true },
-    hashtags: { type: Array, required: true },
+    totalNights: { type: Number },
+    minimumPeople: { type: Number },
+    maximumPeople: { type: Number },
+    minimumAge: { type: Number },
+    includes: { type: Array },
+    excludes: { type: Array },
     pricePerPerson: {
-        price: { type: Number, required: true },
-        type: { type: String, required: true },
+        price: { type: Number },
+        type: { type: String },
     },
-    minimumBookingPeriod: { type: Number, required: true },
-    bookingUrl: { type: String, required: true },
-    facebookUrl: { type: String, required: true },
-    videoUrl: { type: String, required: true },
-    logoImage: { type: String, required: true }, 
-    geoLocation: { "location": String, "lat": String, "lng": String },  
-    partnerName: { type: String, required: true },
+    minimumBookingPeriod: { type: Number },
+    bookingUrl: { type: String },
+    facebookUrl: { type: String },
+    videoUrl: { type: String },
+    logoImage: { type: String },
+    partnerName: { type: String },
  });
 var experienceModel = mongoose.model("Experience", experienceSchema);
 module.exports = experienceModel;

@@ -1,53 +1,54 @@
 var mongoose = require('../shared/dbConfig.js');
 var Schema = mongoose.Schema;
 
-var venueContactSchema = new Schema(    
+var venueContactSchema = new Schema(
     {
-        name: { type: String, required: true },
-        position: { type: String, required: true },
-        phone: { type: Number, required: true },
-        email: { type: String, required: true },
-        facebookUrl: { type: String, required: true },
-    }    
+        name: { type: String },
+        position: { type: String },
+        phone: { type: Number },
+        email: { type: String },
+        facebookUrl: { type: String },
+    }
 );
 var venueSchema = new Schema({
-    metaDescription: { type: String, required: true },
-    headerImage: { type: String, required: true },
-    galleryImages: { type: Array, required: true },
-    mainEditor: { type: String, required: true },
-    introduction: { type: String, required: true },
-    name: { type: String, required: true },
+    name: { type: String },
+    companyName: { type: String },
+    metaDescription: { type: String },
+    introduction: { type: String },
+    mainEditor: { type: String },
     geoLocation: { "location": String, "lat": String, "lng": String },
-    logoImage: { type: String, required: true },
-    websiteUrl: { type: String, required: true },
-    videoUrl: { type: String, required: true },
-    facebookUrl: { type: String, required: true },
-    twitterUrl: { type: String, required: true },
-    instagramUrl: { type: String, required: true },    
-    mainCategory: { type: Array, required: true },
-    amenities: { type: Array, required: true },
-    ticketServiceUrl: { type: String, required: true },
+    mainCategory: { type: Array },
+    headerImage: { type: String },
+    galleryImages: { type: Array },
+    logoImage: { type: String },
+    websiteUrl: { type: String },
+    videoUrl: { type: String },
+    facebookUrl: { type: String },
+    twitterUrl: { type: String },
+    instagramUrl: { type: String },
+    amenities: { type: Array },
+    ticketServiceUrl: { type: String },
     ticketServiceFee: {
-        price: { type: Number, required: true },
-        type: { type: String, required: true },
+        price: { type: Number },
+        type: { type: String },
     },
     ticketServiceRequired: { type: Boolean },
     filmSettings: {
         type: {
-            filmContactName: { type: String, required: true },
-            filmSeatingAmount: { type: Number, required: true },
-            filmMedium: { type: Array, required: true },
+            filmContactName: { type: String },
+            filmSeatingAmount: { type: Number },
+            filmMedium: { type: Array },
             filmRentalFee: {
-                price: { type: Number, required: true },
-                type: { type: String, required: true },
+                price: { type: Number },
+                type: { type: String },
             },
         }
     },
     contacts: [venueContactSchema],
-    paymentContact: { type: String, required: true },
-    paymentPreference: { type: String, required: true },
+    paymentContact: { type: String },
+    paymentPreference: { type: String },
     paypalEmail: { type: String },
-    ibanAccount: { type: String },    
+    ibanAccount: { type: String },
  });
 var venueModel = mongoose.model("Venue", venueSchema);
 module.exports = venueModel;

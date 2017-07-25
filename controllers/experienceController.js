@@ -1,106 +1,118 @@
 var experienceModel = require('../models/experienceModel');
 module.exports = {
-    //Get all experiences
-     getExperiences: function(req, res) {
+    //get all experiences
+    getAllExperiences: function(req, res) {
         experienceModel.find({}, (err, data) => {
             if (err) {
-                res.status(500).send(error); 
+                res.status(500).send(error);
             } else {
                 res.json(data);
-            }         
-        });    
+            }
+        });
     },
+    //get all names
+    getName: (req, res)=>{
+        experienceModel.find().distinct('name', (err, data) => {
+            if (err) {
+                res.status(500).send(error);
+            } else {
+                res.json(data);
+            }
+        });
+    },
+    //get all main categories
+    getMainCategory: (req, res)=>{
+        experienceModel.find().distinct('mainCategory', (err, data) => {
+            if (err) {
+                res.status(500).send(error);
+            } else {
+                res.json(data);
+            }
+        });
+    },
+    //get all hashTags
+    getHashTags: (req, res)=>{
+        experienceModel.find().distinct('hashTags', (err, data) => {
+            if (err) {
+                res.status(500).send(error);
+            } else {
+                res.json(data);
+            }
+        });
+    },
+    // get all includes and excludes
     // union of includes and excludes as excludesAndExcludes
     getIncludesAndExcludes: (req, res)=>{
         console.log('called setunion');
         experienceModel.aggregate([
-            // Don't include documents that have no arrays
-            { "$match": { 
+            // don't include documents that have no arrays
+            { "$match": {
                 "$or": [
                     { "includes.0": { "$exists": true } },
                     { "excludes.0": { "$exists": true } }
                 ]
             }},
-            // Join the arrays and exclude the nulls
+            // join the arrays and exclude the nulls
             { "$project": {
                 "_id": 0,
                 "list": {
                     "$setDifference": [
-                        { "$setUnion": [ 
+                        { "$setUnion": [
                             { "$ifNull": [ "$includes", [null] ] },
                             { "$ifNull": [ "$excludes", [null] ] }
                         ]},
                         [null]
                     ]
             }}},
-            // Unwind. By earlier conditions the array must have some entries
+            // unwind. By earlier conditions the array must have some entries
             {"$unwind": "$list" },
-            // And $group on the list values as the key to produce distinct results
+            // and $group on the list values as the key to produce distinct results
             {"$group": { "_id": "$list" }}
         ], (err, data) => {
             if (err) {
-                res.status(500).send(error); 
+                res.status(500).send(error);
             } else {
                 data = data.map( d => d._id );
                 res.json(data);
-            }         
+            }
         })
     },
-    //get distinct experience by main category
-    getMainCategoryByExperience: (req, res)=>{
-        experienceModel.find().distinct('mainCategory', (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {               
-                res.json(data);
-            }         
-        });
-    },
-    updateExperience: function(req, res) {
-        var id = req.params.id;
-        console.log(id);
-        experienceModel.findByIdAndUpdate(id, req.body, 
-            { overwrite: true, new: true }, (error, response) => {            
+    //create single experience
+    create: function(req, res) {
+        var experience = new experienceModel(req.body);
+        experience.save(function(error, response) {
             if (error) {
                 res.json(error);
                 console.error(error);
-                return;  
+                return;
+            }
+            res.json(response);
+            console.log(response);
+        });
+    },
+    //update single experience
+    update: function(req, res) {
+        var id = req.params.id;
+        experienceModel.findByIdAndUpdate(id, req.body,
+            { overwrite: true, new: true }, (error, response) => {
+            if (error) {
+                res.json(error);
+                console.error(error);
+                return;
             }
             res.json(response);
             console.log(response);
        });
-    },   
-    //get Hashtags
-    getHashTags: (req, res)=>{
-        experienceModel.find().distinct('hashtags', (err, data) => {
-            if (err) {
-                res.status(500).send(error); 
-            } else {
-                res.json(data);
-            }         
-        });
     },
-    createExperience: function(req, res) {
-        var experience = new experienceModel(req.body);  
-        experience.save(function(error, response) {
-            console.log("experience form has been saved!");
-            if (error) {
-                res.json(error);
-                console.error(error);
-                return;  
-            }   
-        res.json(response);
-        console.log(response);
-        });             
-    },
-    deleteExperience: function(req, res) {
+    //detete single experience
+    delete: function(req, res) {
         var id = req.params.id;
         experienceModel.remove({_id: id}, (err, data) => {
             if (err) {
-                res.status(500).send(error); 
+                res.status(500).send(error);
             } else {
                 res.json(data);
-            }         
+            }
         });
-    }    
+    }
 }
