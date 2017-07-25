@@ -20,9 +20,9 @@ module.exports = {
             }
         });
     },
-    //get all hashtags
+    //get all hashTags
     getHashTags: (req, res)=>{
-        filmEventModel.find().distinct('hashtags', (err, data) => {
+        filmEventModel.find().distinct('hashTags', (err, data) => {
             if (err) {
                 res.status(500).send(error);
             } else {

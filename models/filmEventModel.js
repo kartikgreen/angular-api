@@ -21,7 +21,7 @@ var filmEventSchema = new Schema({
     galleryImages: { type: Array },
     unDevelopmentGoals: { type: Array },
     mainCategory: { type: String },
-    hashtags: { type: Array },
+    hashTags: { type: Array },
     facebookUrl: { type: String },
     filmTitleName: { type: String },
     partnerName: { type: Array },

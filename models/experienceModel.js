@@ -16,7 +16,7 @@ var experienceSchema = new Schema({
     galleryImages: { type: Array },
     unDevelopmentGoals: { type: String },
     mainCategory: { type: String },
-    hashtags: { type: Array },
+    hashTags: { type: Array },
     daysAndDescriptions: [dayDescriptionSchema],
     totalNights: { type: Number },
     minimumPeople: { type: Number },

@@ -10,9 +10,9 @@ module.exports = {
             }
         });
     },
-    //get all hashtags
+    //get all hashTags
     getHashTags: (req, res)=> {
-        filmTitleModel.find().distinct('hashtags', (err, data) => {
+        filmTitleModel.find().distinct('hashTags', (err, data) => {
             if (err) {
                 res.status(500).send(error);
             } else {

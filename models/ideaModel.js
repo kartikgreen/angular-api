@@ -23,7 +23,7 @@ var ideaSchema = new Schema({
     mainEditor: { type: String },
     unDevelopmentGoals: { type: String },
     mainCategory: { type: String },
-    hashtags: { type: Array },
+    hashTags: { type: Array },
     headerImage: { type: String },
     galleryImages: { type: Array },
     videoUrl: { type: String },

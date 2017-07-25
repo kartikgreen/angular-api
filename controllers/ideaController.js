@@ -30,9 +30,9 @@ module.exports = {
             }
         });
     },
-    //get hashtags
+    //get hashTags
     getHashTags: (req, res)=>{
-        ideaModel.find().distinct('hashtags', (err, data) => {
+        ideaModel.find().distinct('hashTags', (err, data) => {
             if (err) {
                 res.status(500).send(error);
             } else {

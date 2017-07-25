@@ -6,7 +6,7 @@ var filmTitleSchema = new Schema({
     metaDescription: { type: String },
     introduction: { type: String },
     mainEditor: { type: String },
-    hashtags: { type: Array },
+    hashTags: { type: Array },
     headerImage: { type: String },
     galleryImages: { type: Array },
     logoImage: { type: String },

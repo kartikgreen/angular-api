@@ -30,9 +30,9 @@ module.exports = {
             }
         });
     },
-    //get all hashtags
+    //get all hashTags
     getHashTags: (req, res)=>{
-        experienceModel.find().distinct('hashtags', (err, data) => {
+        experienceModel.find().distinct('hashTags', (err, data) => {
             if (err) {
                 res.status(500).send(error);
             } else {
